@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --institute-dark: #1a1a2e;
+  --institute-navy: #16213e;
+  --institute-blue: #0f3460;
+  --institute-gold: #f5a623;
+  --institute-red: #c0392b;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-yellow-600 hover:bg-yellow-700 text-white font-semibold px-6 py-3 rounded-md transition-all duration-300 inline-flex items-center gap-2;
+  }
+  .btn-outline {
+    @apply border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white font-semibold px-6 py-3 rounded-md transition-all duration-300 inline-flex items-center gap-2;
+  }
+  .section-title {
+    @apply text-3xl font-bold text-gray-800 mb-2 font-heading;
+  }
+  .section-subtitle {
+    @apply text-lg text-gray-500 mb-8;
+  }
+}
+
+/* Ticker animation */
+.ticker-wrap {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker-content {
+  display: inline-block;
+  animation: ticker 40s linear infinite;
+}
+.ticker-content:hover {
+  animation-play-state: paused;
+}
+@keyframes ticker {
+  0%   { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Hero slider */
+.hero-slide {
+  transition: opacity 1s ease-in-out;
+}
+
+/* Notification badge */
+.notification-badge {
+  @apply absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center;
+}
