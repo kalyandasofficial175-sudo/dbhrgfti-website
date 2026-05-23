@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Play, ArrowRight, ImageIcon, Phone, Mail } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play, ArrowRight, Phone, Mail } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 /*
@@ -260,13 +260,6 @@ export default function HeroBanner() {
           ))}
         </div>
 
-        {/* Show image placeholder hint only when no image set */}
-        {!slide.image && (
-          <div className="flex items-center gap-1.5 bg-black/40 backdrop-blur-sm text-white/70 text-xs px-3 py-1 rounded-full border border-white/10">
-            <ImageIcon size={11} />
-            Place 1920×680px image at /public/images/banner-{current + 1}.jpg
-          </div>
-        )}
       </div>
 
       {/* ── Progress bar ── */}
