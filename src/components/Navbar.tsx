@@ -11,6 +11,9 @@ export default function Navbar() {
 
   const navLinks = [
     { label: tr.home, href: "/" },
+    { label: tr.home, href: "/home1" },
+    { label: tr.home, href: "/home2" },
+
     {
       label: tr.about,
       href: "/who-we-are",
@@ -20,28 +23,28 @@ export default function Navbar() {
         { label: tr.history, href: "/history" },
       ],
     },
-    {
-      label: tr.academics,
-      href: "#academics",
-      children: [
-        { label: tr.coursesOffered, href: "#courses" },
-        { label: tr.syllabus, href: "#syllabus" },
-        { label: tr.academicCalendar, href: "#calendar" },
-        { label: tr.departments, href: "#departments" },
-      ],
-    },
-    {
-      label: tr.admissions,
-      href: "#admissions",
-      children: [
-        { label: tr.admissionProcedure, href: "#admissions" },
-        { label: tr.eligibilityCriteria, href: "#eligibility" },
-        { label: tr.feeStructure, href: "#fees" },
-        { label: tr.scholarships, href: "#scholarships" },
-      ],
-    },
-    { label: tr.gallery, href: "#gallery" },
-    { label: tr.newsEvents, href: "/news-events" },
+    // {
+    //   label: tr.academics,
+    //   href: "#academics",
+    //   children: [
+    //     { label: tr.coursesOffered, href: "#courses" },
+    //     { label: tr.syllabus, href: "#syllabus" },
+    //     { label: tr.academicCalendar, href: "#calendar" },
+    //     { label: tr.departments, href: "#departments" },
+    //   ],
+    // },
+    // {
+    //   label: tr.admissions,
+    //   href: "#admissions",
+    //   children: [
+    //     { label: tr.admissionProcedure, href: "#admissions" },
+    //     { label: tr.eligibilityCriteria, href: "#eligibility" },
+    //     { label: tr.feeStructure, href: "#fees" },
+    //     { label: tr.scholarships, href: "#scholarships" },
+    //   ],
+    // },
+    // { label: tr.gallery, href: "#gallery" },
+    // { label: tr.newsEvents, href: "/news-events" },
     { label: tr.contact, href: "/contact" },
   ];
 
@@ -83,6 +86,7 @@ export default function Navbar() {
               width={56}
               height={56}
               className="object-contain drop-shadow-md"
+              style={{ height: 'auto' }}
             />
           </div>
 

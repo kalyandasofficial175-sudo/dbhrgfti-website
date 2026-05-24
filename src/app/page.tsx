@@ -8,6 +8,7 @@ import CoursesSection from "@/components/CoursesSection";
 import StatsSection from "@/components/StatsSection";
 import NewsEvents from "@/components/NewsEvents";
 import AdmissionCTA from "@/components/AdmissionCTA";
+import ImageSliderSection from "@/components/ImageSliderSection";
 import Footer from "@/components/Footer";
 
 export default function HomePage() {
@@ -21,8 +22,14 @@ export default function HomePage() {
       <VisionMission />
       <CoursesSection />
       <StatsSection />
+      <ImageSliderSection
+        heading="Campus Gallery"
+        tag="Our Institute"
+        sectionBg="bg-white"
+        accent="text-yellow-600"
+        accentHex="#eab308"
+      />
       <NewsEvents />
-      {/* <GallerySection /> */}
       <AdmissionCTA />
       <Footer />
     </main>
