@@ -25,7 +25,7 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const SLIDES_CONFIG = [
   {
-    image: "/images/studio-a.jpg",          // ← set to "/images/banner-1.jpg"
+    image: "/images/gallery/studio-a.jpg",
     fallbackBg: "from-[#1a1a2e] via-[#16213e] to-[#0f3460]",
     overlayOpacity: "bg-black/55",
     accent: "bg-yellow-500",
@@ -40,7 +40,7 @@ const SLIDES_CONFIG = [
     cta2Href: "#gallery",
   },
   {
-    image: "/images/slide-2.jpg",          // ← set to "/images/banner-2.jpg"
+    image: "/images/gallery/slide-2.jpg",
     fallbackBg: "from-[#0f3460] via-[#16213e] to-[#1a1a2e]",
     overlayOpacity: "bg-black/60",
     accent: "bg-red-500",
@@ -55,7 +55,7 @@ const SLIDES_CONFIG = [
     cta2Href: "#gallery",
   },
   {
-    image: "/images/studio-a.jpg",          // ← set to "/images/banner-3.jpg"
+    image: "/images/gallery/studio-a.jpg",
     fallbackBg: "from-[#451a03] via-[#78350f] to-[#92400e]",
     overlayOpacity: "bg-black/50",
     accent: "bg-yellow-400",
