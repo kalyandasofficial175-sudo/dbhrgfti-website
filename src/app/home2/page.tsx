@@ -21,6 +21,7 @@ import NotificationBanner from "@/components/NotificationBanner";
 import Footer from "@/components/Footer";
 import ImageSliderSection from "@/components/ImageSliderSection";
 import SocialMedia from "@/components/SocialMedia";
+import StudyOptions from "@/components/StudyOptions";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -793,6 +794,7 @@ export default function Home2Page() {
       <Ticker />
       <FeaturesSection />
       <CoursesSection />
+      <StudyOptions />
       <ImageSliderSection
         heading="Behind the Lens"
         tag="Campus Gallery"

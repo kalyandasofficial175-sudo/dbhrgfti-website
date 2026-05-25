@@ -10,6 +10,7 @@ import NewsEvents from "@/components/NewsEvents";
 import AdmissionCTA from "@/components/AdmissionCTA";
 import ImageSliderSection from "@/components/ImageSliderSection";
 import SocialMedia from "@/components/SocialMedia";
+import StudyOptions from "@/components/StudyOptions";
 import Footer from "@/components/Footer";
 
 export default function HomePage() {
@@ -22,6 +23,7 @@ export default function HomePage() {
       <AboutSection />
       <VisionMission />
       <CoursesSection />
+      <StudyOptions />
       <StatsSection />
       <ImageSliderSection
         heading="Campus Gallery"

@@ -4,6 +4,7 @@ import NotificationBanner from "@/components/NotificationBanner";
 import Footer from "@/components/Footer";
 import ImageSliderSection from "@/components/ImageSliderSection";
 import SocialMedia from "@/components/SocialMedia";
+import StudyOptions from "@/components/StudyOptions";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef, useCallback } from "react";
@@ -746,6 +747,7 @@ export default function Home1Page() {
       <QuickBar />
       <AboutSection />
       <ProgramsSection />
+      <StudyOptions />
       <StatsSection />
       <ImageSliderSection
         heading="Life at DBHRGFTI"
