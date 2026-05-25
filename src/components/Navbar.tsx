@@ -7,29 +7,22 @@ import { useLanguage } from "@/context/LanguageContext";
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [scrolled, setScrolled] = useState(false);
   const { lang, toggleLang, tr } = useLanguage();
-  const headerRef = useRef<HTMLElement>(null);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    const header = headerRef.current;
-    if (!header) return;
+    const nav = navRef.current;
+    if (!nav) return;
     const update = () =>
       document.documentElement.style.setProperty(
         "--navbar-height",
-        header.offsetHeight + "px"
+        nav.offsetHeight + "px"
       );
     update();
     const ro = new ResizeObserver(update);
-    ro.observe(header);
+    ro.observe(nav);
     return () => ro.disconnect();
-  }, [scrolled]);
+  }, []);
 
   const navLinks = [
     { label: tr.home, href: "/" },
@@ -71,9 +64,8 @@ export default function Navbar() {
   ];
 
   return (
-    <header ref={headerRef} className="sticky top-0 z-50 bg-white shadow-md">
-      {/* Top Bar + Logo Bar — hidden on scroll */}
-      <div className={`overflow-hidden transition-all duration-300 ease-in-out ${scrolled ? "max-h-0" : "max-h-40"}`}>
+    <>
+      {/* Top Bar — scrolls with page */}
       <div className="bg-[#1a1a2e] text-gray-300 text-xs py-2 hidden md:block">
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center gap-6">
@@ -84,24 +76,19 @@ export default function Navbar() {
               <Mail size={11} /> info@bhfti.gov.in
             </a>
           </div>
-          <div className="flex items-center gap-4">
-            <button
-              onClick={toggleLang}
-              className="flex items-center gap-1.5 bg-yellow-500/20 hover:bg-yellow-500/30 border border-yellow-500/40 text-yellow-400 px-3 py-1 rounded-full text-xs font-semibold transition-all"
-            >
-              <Globe size={11} />
-              {lang === "en" ? "অসমীয়া" : "English"}
-            </button>
-          </div>
+          <button
+            onClick={toggleLang}
+            className="flex items-center gap-1.5 bg-yellow-500/20 hover:bg-yellow-500/30 border border-yellow-500/40 text-yellow-400 px-3 py-1 rounded-full text-xs font-semibold transition-all"
+          >
+            <Globe size={11} />
+            {lang === "en" ? "অসমীয়া" : "English"}
+          </button>
         </div>
       </div>
 
-      {/* Logo Bar */}
+      {/* Logo Bar — scrolls with page */}
       <div className="bg-[#16213e] py-4">
         <div className="max-w-7xl mx-auto px-4 flex items-center gap-4">
-
-          {/* India Emblem */}
-          {/* ← Place the emblem image at: public/images/india-emblem.png */}
           <div className="w-14 h-14 flex-shrink-0 flex items-center justify-center">
             <Image
               src="/images/india-emblem.png"
@@ -109,18 +96,13 @@ export default function Navbar() {
               width={56}
               height={56}
               className="object-contain drop-shadow-md"
-              style={{ height: 'auto' }}
+              style={{ height: "auto" }}
             />
           </div>
-
-          {/* Divider */}
-          <div className="w-px h-12 bg-white/20 flex-shrink-0 hidden sm:block"></div>
-
-          {/* BH Badge */}
+          <div className="w-px h-12 bg-white/20 flex-shrink-0 hidden sm:block" />
           <div className="w-14 h-14 rounded-full bg-yellow-500 flex items-center justify-center flex-shrink-0 border-2 border-yellow-300">
             <span className="text-[#1a1a2e] font-black text-xl">BH</span>
           </div>
-
           <div>
             <h1 className="text-white font-bold text-base md:text-xl leading-tight font-heading">
               {lang === "en"
@@ -138,7 +120,6 @@ export default function Navbar() {
                 : "অসম চৰকাৰ | সাংস্কৃতিক বিষয়ক মন্ত্ৰালয়"}
             </p>
           </div>
-
           {/* Mobile lang toggle */}
           <button
             onClick={toggleLang}
@@ -149,96 +130,97 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-      </div>
 
-      {/* Nav Bar */}
-      <nav className="bg-[#0f3460]">
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center">
-            {navLinks.map((link) => (
-              <div
-                key={link.label}
-                className="relative group"
-                onMouseEnter={() => setActiveDropdown(link.label)}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <a
-                  href={link.href}
-                  className="flex items-center gap-1 text-white hover:text-yellow-400 hover:bg-[#1a1a2e] px-4 py-4 text-sm font-medium transition-colors"
+      {/* Nav Bar — sticky, constant height, no layout shifts */}
+      <header ref={navRef} className="sticky top-0 z-50 shadow-md">
+        <nav className="bg-[#0f3460]">
+          <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
+            {/* Desktop Nav */}
+            <div className="hidden md:flex items-center">
+              {navLinks.map((link) => (
+                <div
+                  key={link.href}
+                  className="relative group"
+                  onMouseEnter={() => setActiveDropdown(link.href)}
+                  onMouseLeave={() => setActiveDropdown(null)}
                 >
-                  {link.label}
-                  {link.children && <ChevronDown size={14} />}
-                </a>
-                {link.children && activeDropdown === link.label && (
-                  <div className="absolute top-full left-0 w-56 bg-white shadow-xl rounded-b-lg border-t-2 border-yellow-500 z-50">
-                    {link.children.map((child) => (
-                      <a
-                        key={child.label}
-                        href={child.href}
-                        className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-yellow-50 hover:text-yellow-700 border-b border-gray-100 last:border-0 transition-colors"
-                      >
-                        {child.label}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+                  <a
+                    href={link.href}
+                    className="flex items-center gap-1 text-white hover:text-yellow-400 hover:bg-[#1a1a2e] px-4 py-4 text-sm font-medium transition-colors"
+                  >
+                    {link.label}
+                    {link.children && <ChevronDown size={14} />}
+                  </a>
+                  {link.children && activeDropdown === link.href && (
+                    <div className="absolute top-full left-0 w-56 bg-white shadow-xl rounded-b-lg border-t-2 border-yellow-500 z-50">
+                      {link.children.map((child) => (
+                        <a
+                          key={child.href}
+                          href={child.href}
+                          className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-yellow-50 hover:text-yellow-700 border-b border-gray-100 last:border-0 transition-colors"
+                        >
+                          {child.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
 
-          <a
-            href="#admissions"
-            className="hidden md:inline-flex bg-yellow-500 hover:bg-yellow-600 text-black font-bold text-sm px-5 py-2 my-2 rounded transition-colors"
-          >
-            {tr.applyNow}
-          </a>
-
-          <button
-            className="md:hidden text-white p-3"
-            onClick={() => setMobileOpen(!mobileOpen)}
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {mobileOpen && (
-          <div className="md:hidden bg-[#16213e] border-t border-[#0f3460]">
-            {navLinks.map((link) => (
-              <div key={link.label}>
-                <a
-                  href={link.href}
-                  className="block px-4 py-3 text-white hover:text-yellow-400 hover:bg-[#1a1a2e] text-sm font-medium border-b border-[#0f3460] transition-colors"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {link.label}
-                </a>
-                {link.children && (
-                  <div className="bg-[#1a1a2e]">
-                    {link.children.map((child) => (
-                      <a
-                        key={child.label}
-                        href={child.href}
-                        className="block px-8 py-2.5 text-gray-300 hover:text-yellow-400 text-xs border-b border-[#0f3460] transition-colors"
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        — {child.label}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
             <a
               href="#admissions"
-              className="block bg-yellow-500 text-black font-bold text-center py-3 text-sm"
+              className="hidden md:inline-flex bg-yellow-500 hover:bg-yellow-600 text-black font-bold text-sm px-5 py-2 my-2 rounded transition-colors"
             >
               {tr.applyNow}
             </a>
+
+            <button
+              className="md:hidden text-white p-3"
+              onClick={() => setMobileOpen(!mobileOpen)}
+            >
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
-        )}
-      </nav>
-    </header>
+
+          {/* Mobile Menu */}
+          {mobileOpen && (
+            <div className="md:hidden bg-[#16213e] border-t border-[#0f3460]">
+              {navLinks.map((link) => (
+                <div key={link.href}>
+                  <a
+                    href={link.href}
+                    className="block px-4 py-3 text-white hover:text-yellow-400 hover:bg-[#1a1a2e] text-sm font-medium border-b border-[#0f3460] transition-colors"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                  {link.children && (
+                    <div className="bg-[#1a1a2e]">
+                      {link.children.map((child) => (
+                        <a
+                          key={child.href}
+                          href={child.href}
+                          className="block px-8 py-2.5 text-gray-300 hover:text-yellow-400 text-xs border-b border-[#0f3460] transition-colors"
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          — {child.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+              <a
+                href="#admissions"
+                className="block bg-yellow-500 text-black font-bold text-center py-3 text-sm"
+              >
+                {tr.applyNow}
+              </a>
+            </div>
+          )}
+        </nav>
+      </header>
+    </>
   );
 }
