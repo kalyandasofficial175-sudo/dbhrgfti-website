@@ -9,6 +9,7 @@ import StatsSection from "@/components/StatsSection";
 import NewsEvents from "@/components/NewsEvents";
 import AdmissionCTA from "@/components/AdmissionCTA";
 import ImageSliderSection from "@/components/ImageSliderSection";
+import SocialMedia from "@/components/SocialMedia";
 import Footer from "@/components/Footer";
 
 export default function HomePage() {
@@ -30,6 +31,7 @@ export default function HomePage() {
         accentHex="#eab308"
       />
       <NewsEvents />
+      <SocialMedia />
       <AdmissionCTA />
       <Footer />
     </main>
