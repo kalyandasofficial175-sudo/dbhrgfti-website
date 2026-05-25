@@ -20,6 +20,7 @@ import Navbar from "@/components/Navbar";
 import NotificationBanner from "@/components/NotificationBanner";
 import Footer from "@/components/Footer";
 import ImageSliderSection from "@/components/ImageSliderSection";
+import SocialMedia from "@/components/SocialMedia";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -801,6 +802,7 @@ export default function Home2Page() {
       />
       <NewsSection />
       <StatsSection />
+      <SocialMedia />
       <AdmissionCTA />
       <Footer />
     </main>

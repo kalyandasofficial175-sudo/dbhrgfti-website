@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import NotificationBanner from "@/components/NotificationBanner";
 import Footer from "@/components/Footer";
 import ImageSliderSection from "@/components/ImageSliderSection";
+import SocialMedia from "@/components/SocialMedia";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef, useCallback } from "react";
@@ -753,6 +754,7 @@ export default function Home1Page() {
         accent="text-orange-600"
         accentHex="#ea580c"
       />
+      <SocialMedia />
       <AdmissionCTA />
       <Footer />
     </main>
