@@ -26,7 +26,6 @@ export default function HomePage() {
       <AnimateIn variant="fadeUp"><VisionMission /></AnimateIn>
       <AnimateIn variant="fadeUp"><CoursesSection /></AnimateIn>
       <AnimateIn variant="fadeUp"><StudyOptions /></AnimateIn>
-      <AnimateIn variant="fadeUp"><StatsSection /></AnimateIn>
       <AnimateIn variant="fadeUp">
         <ImageSliderSection
           heading="Campus Gallery"
@@ -39,6 +38,7 @@ export default function HomePage() {
       <AnimateIn variant="fadeUp"><NewsEvents /></AnimateIn>
       <AnimateIn variant="fadeUp"><SocialMedia /></AnimateIn>
       <AnimateIn variant="fadeUp"><AlumniSlider /></AnimateIn>
+      <AnimateIn variant="fadeUp"><StatsSection /></AnimateIn>
       <AnimateIn variant="scaleUp"><AdmissionCTA /></AnimateIn>
       <AnimateIn variant="fadeUp"><Footer /></AnimateIn>
     </main>

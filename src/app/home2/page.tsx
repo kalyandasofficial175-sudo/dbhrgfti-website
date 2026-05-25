@@ -810,9 +810,9 @@ export default function Home2Page() {
         />
       </AnimateIn>
       <AnimateIn variant="fadeUp"><NewsSection /></AnimateIn>
+      <AnimateIn variant="fadeUp"><AlumniSlider /></AnimateIn>
       <AnimateIn variant="fadeUp"><StatsSection /></AnimateIn>
       <AnimateIn variant="fadeUp"><SocialMedia /></AnimateIn>
-      <AnimateIn variant="fadeUp"><AlumniSlider /></AnimateIn>
       <AnimateIn variant="scaleUp"><AdmissionCTA /></AnimateIn>
       <AnimateIn variant="fadeUp"><Footer /></AnimateIn>
     </main>
