@@ -55,7 +55,7 @@ function VideoHero() {
   };
 
   return (
-    <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative h-[calc(100vh-var(--navbar-height,0px))] min-h-[600px] flex items-center justify-center overflow-hidden bg-black">
 
       {/* ── VIDEO ── */}
       <video

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Menu, X, ChevronDown, Phone, Mail, Globe } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -9,12 +9,27 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const { lang, toggleLang, tr } = useLanguage();
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    const update = () =>
+      document.documentElement.style.setProperty(
+        "--navbar-height",
+        header.offsetHeight + "px"
+      );
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(header);
+    return () => ro.disconnect();
+  }, [scrolled]);
 
   const navLinks = [
     { label: tr.home, href: "/" },
@@ -56,7 +71,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-md">
+    <header ref={headerRef} className="sticky top-0 z-50 bg-white shadow-md">
       {/* Top Bar + Logo Bar — hidden on scroll */}
       <div className={`overflow-hidden transition-all duration-300 ease-in-out ${scrolled ? "max-h-0" : "max-h-40"}`}>
       <div className="bg-[#1a1a2e] text-gray-300 text-xs py-2 hidden md:block">
