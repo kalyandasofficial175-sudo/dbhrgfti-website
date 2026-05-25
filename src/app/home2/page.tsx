@@ -228,19 +228,22 @@ const FEATURES = [
     icon: Star,
     title: "Only Govt. Film Institute in NE India",
     body: "DBHRGFTI is the sole government-run Film & Television training institute in the entire North-Eastern region, providing subsidised, high-quality education.",
-    accent: "bg-red-100 text-red-700",
+    card: "bg-red-700",
+    accent: "bg-white/20 text-white",
   },
   {
     icon: Award,
     title: "Industry-Aligned Curriculum",
     body: "Our syllabus is designed with working professionals. Students graduate ready for the floor — camera-ready, edit-suite-ready, broadcast-ready.",
-    accent: "bg-amber-100 text-amber-700",
+    card: "bg-indigo-700",
+    accent: "bg-white/20 text-white",
   },
   {
     icon: Camera,
     title: "Professional-Grade Studios",
     body: "State-of-the-art production studios, edit suites, sound recording rooms, and outdoor locations in the film-rich landscape of Assam.",
-    accent: "bg-green-100 text-green-700",
+    card: "bg-emerald-700",
+    accent: "bg-white/20 text-white",
   },
 ];
 
@@ -264,13 +267,13 @@ function FeaturesSection() {
             return (
               <div
                 key={f.title}
-                className="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm hover:shadow-lg transition-shadow group"
+                className={`${f.card} rounded-2xl p-7 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-200 group`}
               >
                 <div className={`w-12 h-12 rounded-xl ${f.accent} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform`}>
                   <Icon size={22} />
                 </div>
-                <h3 className="font-black text-gray-900 text-lg mb-3 leading-snug">{f.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{f.body}</p>
+                <h3 className="font-black text-white text-lg mb-3 leading-snug">{f.title}</h3>
+                <p className="text-white/75 text-sm leading-relaxed">{f.body}</p>
               </div>
             );
           })}
