@@ -23,28 +23,28 @@ export default function Navbar() {
         { label: tr.history, href: "/history" },
       ],
     },
-    // {
-    //   label: tr.academics,
-    //   href: "#academics",
-    //   children: [
-    //     { label: tr.coursesOffered, href: "#courses" },
-    //     { label: tr.syllabus, href: "#syllabus" },
-    //     { label: tr.academicCalendar, href: "#calendar" },
-    //     { label: tr.departments, href: "#departments" },
-    //   ],
-    // },
-    // {
-    //   label: tr.admissions,
-    //   href: "#admissions",
-    //   children: [
-    //     { label: tr.admissionProcedure, href: "#admissions" },
-    //     { label: tr.eligibilityCriteria, href: "#eligibility" },
-    //     { label: tr.feeStructure, href: "#fees" },
-    //     { label: tr.scholarships, href: "#scholarships" },
-    //   ],
-    // },
-    // { label: tr.gallery, href: "#gallery" },
-    // { label: tr.newsEvents, href: "/news-events" },
+    {
+      label: tr.academics,
+      href: "#academics",
+      children: [
+        { label: tr.coursesOffered, href: "#courses" },
+        { label: tr.syllabus, href: "#syllabus" },
+        { label: tr.academicCalendar, href: "#calendar" },
+        { label: tr.departments, href: "#departments" },
+      ],
+    },
+    {
+      label: tr.admissions,
+      href: "#admissions",
+      children: [
+        { label: tr.admissionProcedure, href: "#admissions" },
+        { label: tr.eligibilityCriteria, href: "#eligibility" },
+        { label: tr.feeStructure, href: "#fees" },
+        { label: tr.scholarships, href: "#scholarships" },
+      ],
+    },
+    { label: tr.gallery, href: "#gallery" },
+    { label: tr.newsEvents, href: "/news-events" },
     { label: tr.contact, href: "/contact" },
   ];
 
