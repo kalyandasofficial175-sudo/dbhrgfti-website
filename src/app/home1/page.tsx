@@ -6,6 +6,7 @@ import ImageSliderSection from "@/components/ImageSliderSection";
 import SocialMedia from "@/components/SocialMedia";
 import StudyOptions from "@/components/StudyOptions";
 import AnimateIn from "@/components/AnimateIn";
+import AlumniSlider from "@/components/AlumniSlider";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef, useCallback } from "react";
@@ -760,6 +761,7 @@ export default function Home1Page() {
         />
       </AnimateIn>
       <AnimateIn variant="fadeUp"><SocialMedia /></AnimateIn>
+      <AnimateIn variant="fadeUp"><AlumniSlider /></AnimateIn>
       <AnimateIn variant="scaleUp"><AdmissionCTA /></AnimateIn>
       <AnimateIn variant="fadeUp"><Footer /></AnimateIn>
     </main>
