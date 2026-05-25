@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Bell, X, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -36,7 +36,14 @@ const typeLabels = {
 export default function NotificationBanner() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [dismissed, setDismissed] = useState<number[]>([]);
+  const [scrolled, setScrolled] = useState(false);
   const { lang, tr } = useLanguage();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const notifications = notificationsData[lang];
   const labels = typeLabels[lang];
@@ -44,6 +51,11 @@ export default function NotificationBanner() {
 
   return (
     <>
+      <div
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${
+          scrolled ? "max-h-0" : "max-h-20"
+        }`}
+      >
       <div className="bg-[#0f3460] text-white py-2 flex items-center overflow-hidden relative z-50">
         <div className="flex-shrink-0 bg-[#f5a623] text-[#1a1a2e] font-bold text-sm px-4 py-1 flex items-center gap-2 z-10 relative">
           <Bell size={14} className="animate-pulse" />
@@ -70,6 +82,7 @@ export default function NotificationBanner() {
         >
           {isExpanded ? tr.close : tr.allNotices}
         </button>
+      </div>
       </div>
 
       {isExpanded && (
