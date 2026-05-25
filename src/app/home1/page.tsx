@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import ImageSliderSection from "@/components/ImageSliderSection";
 import SocialMedia from "@/components/SocialMedia";
 import StudyOptions from "@/components/StudyOptions";
+import AnimateIn from "@/components/AnimateIn";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef, useCallback } from "react";
@@ -744,21 +745,23 @@ export default function Home1Page() {
       <NotificationBanner />
       <Navbar />
       <Hero />
-      <QuickBar />
-      <AboutSection />
-      <ProgramsSection />
-      <StudyOptions />
-      <StatsSection />
-      <ImageSliderSection
-        heading="Life at DBHRGFTI"
-        tag="Campus Gallery"
-        sectionBg="bg-gray-50"
-        accent="text-orange-600"
-        accentHex="#ea580c"
-      />
-      <SocialMedia />
-      <AdmissionCTA />
-      <Footer />
+      <AnimateIn variant="fadeDown"><QuickBar /></AnimateIn>
+      <AnimateIn variant="fadeUp"><AboutSection /></AnimateIn>
+      <AnimateIn variant="fadeUp"><ProgramsSection /></AnimateIn>
+      <AnimateIn variant="fadeUp"><StudyOptions /></AnimateIn>
+      <AnimateIn variant="fadeUp"><StatsSection /></AnimateIn>
+      <AnimateIn variant="fadeUp">
+        <ImageSliderSection
+          heading="Life at DBHRGFTI"
+          tag="Campus Gallery"
+          sectionBg="bg-gray-50"
+          accent="text-orange-600"
+          accentHex="#ea580c"
+        />
+      </AnimateIn>
+      <AnimateIn variant="fadeUp"><SocialMedia /></AnimateIn>
+      <AnimateIn variant="scaleUp"><AdmissionCTA /></AnimateIn>
+      <AnimateIn variant="fadeUp"><Footer /></AnimateIn>
     </main>
   );
 }

@@ -22,6 +22,7 @@ import Footer from "@/components/Footer";
 import ImageSliderSection from "@/components/ImageSliderSection";
 import SocialMedia from "@/components/SocialMedia";
 import StudyOptions from "@/components/StudyOptions";
+import AnimateIn from "@/components/AnimateIn";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -794,22 +795,24 @@ export default function Home2Page() {
       <NotificationBanner />
       <Navbar />
       <VideoHero />
-      <Ticker />
-      <FeaturesSection />
-      <CoursesSection />
-      <StudyOptions />
-      <ImageSliderSection
-        heading="Behind the Lens"
-        tag="Campus Gallery"
-        sectionBg="bg-white"
-        accent="text-red-600"
-        accentHex="#dc2626"
-      />
-      <NewsSection />
-      <StatsSection />
-      <SocialMedia />
-      <AdmissionCTA />
-      <Footer />
+      <AnimateIn variant="fadeDown"><Ticker /></AnimateIn>
+      <AnimateIn variant="fadeUp"><FeaturesSection /></AnimateIn>
+      <AnimateIn variant="fadeUp"><CoursesSection /></AnimateIn>
+      <AnimateIn variant="fadeUp"><StudyOptions /></AnimateIn>
+      <AnimateIn variant="fadeUp">
+        <ImageSliderSection
+          heading="Behind the Lens"
+          tag="Campus Gallery"
+          sectionBg="bg-white"
+          accent="text-red-600"
+          accentHex="#dc2626"
+        />
+      </AnimateIn>
+      <AnimateIn variant="fadeUp"><NewsSection /></AnimateIn>
+      <AnimateIn variant="fadeUp"><StatsSection /></AnimateIn>
+      <AnimateIn variant="fadeUp"><SocialMedia /></AnimateIn>
+      <AnimateIn variant="scaleUp"><AdmissionCTA /></AnimateIn>
+      <AnimateIn variant="fadeUp"><Footer /></AnimateIn>
     </main>
   );
 }
